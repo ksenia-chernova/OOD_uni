@@ -1,0 +1,66 @@
+@startuml NN
+
+abstract class Neuron
+{
+    -vector<float> weights
+    -float bias
+    -float output
+    -float delta
+
+    +activate(inputs)
+    +computeGradient(nextError)
+}
+
+class Layer
+{
+    -vector<float> neurons
+    -vector<float> layer_input
+    -vector<float> layer_output
+
+    +forward(inputs)
+    +backward(gradientFromNext)
+}
+
+class Network
+{
+    -vector<float> layers
+
+    +predict(input)
+    +train(DataSample, target)
+
+}
+
+class Optimizer
+{
+    -float learning_rate
+
+    +update(layers)
+}
+
+class LossFunction
+{
+    +compute(predict, target)
+    +derivative(predict, target)
+}
+
+class ArtificialNeuralNetwork
+{
+    -unique_ptr<Optimizer> optimizer
+    -unique_ptr<LossFunction> lossFunction
+    -size_t currentEpoch
+
+    +addLayer(Layer&& layer)
+    +setOptimizer(std::unique_ptr<Optimizer> optimizer)
+    +setLossFunction(std::unique_ptr<LossFunction> lossFunction)
+
+    +predict(inputs)
+
+}
+
+Neuron <|-- Layer
+Layer <|-- Network
+Network <|-- ArtificialNeuralNetwork
+Optimizer <|-- ArtificialNeuralNetwork
+LossFunction <|-- ArtificialNeuralNetwork
+
+@enduml
