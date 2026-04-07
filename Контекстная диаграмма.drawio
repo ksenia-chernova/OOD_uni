@@ -1,0 +1,97 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 YaBrowser/26.3.0.0 Safari/537.36" version="29.3.8">
+  <diagram name="Страница-1" id="mJPn_SHNFPyXli3mq4JR">
+    <mxGraphModel dx="1426" dy="728" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="1tVsdVtRWur1VHvv7in1-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="700" width="660" x="370" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Разработчик" vertex="1">
+          <mxGeometry height="60" width="120" x="640" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="570" width="590" x="405" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;pre style=&quot;font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-variant-emoji: normal; font-stretch: normal; font-size: 13px; line-height: 22px; font-family: Menlo, Monaco, Consolas, &amp;quot;Cascadia Mono&amp;quot;, &amp;quot;Ubuntu Mono&amp;quot;, &amp;quot;DejaVu Sans Mono&amp;quot;, &amp;quot;Liberation Mono&amp;quot;, &amp;quot;JetBrains Mono&amp;quot;, &amp;quot;Fira Code&amp;quot;, Cousine, &amp;quot;Roboto Mono&amp;quot;, &amp;quot;Courier New&amp;quot;, Courier, sans-serif, system-ui; overflow: auto; text-wrap-mode: wrap; word-break: break-all; padding: 16px; color: rgb(15, 17, 21); text-align: start; margin: 0px !important;&quot;&gt;ВНЕШНЕЕ ОКРУЖЕНИЕ &lt;/pre&gt;" vertex="1">
+          <mxGeometry height="30" width="190" x="605" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="320" width="510" x="445" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Пользовательское приложение&amp;nbsp;&lt;div&gt;(С++ Application)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="200" x="605" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="180" width="300" x="555" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;pre style=&quot;font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-variant-emoji: normal; font-stretch: normal; font-size: 13px; line-height: 22px; font-family: Menlo, Monaco, Consolas, &amp;quot;Cascadia Mono&amp;quot;, &amp;quot;Ubuntu Mono&amp;quot;, &amp;quot;DejaVu Sans Mono&amp;quot;, &amp;quot;Liberation Mono&amp;quot;, &amp;quot;JetBrains Mono&amp;quot;, &amp;quot;Fira Code&amp;quot;, Cousine, &amp;quot;Roboto Mono&amp;quot;, &amp;quot;Courier New&amp;quot;, Courier, sans-serif, system-ui; overflow: auto; text-wrap-mode: wrap; word-break: break-all; padding: 16px; color: rgb(15, 17, 21); text-align: start; margin: 0px !important;&quot;&gt;NeuralNetworkLib               &lt;/pre&gt;" vertex="1">
+          <mxGeometry height="30" width="150" x="630" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="70" x="580" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="70" x="665" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="70" x="750" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="70" x="750" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="70" x="665" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="30" width="70" x="580" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Neuron" vertex="1">
+          <mxGeometry height="30" width="60" x="585" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Layer" vertex="1">
+          <mxGeometry height="30" width="60" x="670" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-16" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Network" vertex="1">
+          <mxGeometry height="30" width="60" x="755" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-17" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;pre style=&quot;font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-variant-emoji: normal; font-stretch: normal; font-size: 13px; line-height: 22px; font-family: Menlo, Monaco, Consolas, &amp;quot;Cascadia Mono&amp;quot;, &amp;quot;Ubuntu Mono&amp;quot;, &amp;quot;DejaVu Sans Mono&amp;quot;, &amp;quot;Liberation Mono&amp;quot;, &amp;quot;JetBrains Mono&amp;quot;, &amp;quot;Fira Code&amp;quot;, Cousine, &amp;quot;Roboto Mono&amp;quot;, &amp;quot;Courier New&amp;quot;, Courier, sans-serif, system-ui; overflow: auto; text-wrap-mode: wrap; word-break: break-all; padding: 16px; color: rgb(15, 17, 21); text-align: start; margin: 0px !important;&quot;&gt;Optimizer&lt;/pre&gt;" vertex="1">
+          <mxGeometry height="30" width="105" x="565" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&#xa;&lt;pre style=&quot;font: 400 13px / 22px Menlo, Monaco, Consolas, &amp;quot;Cascadia Mono&amp;quot;, &amp;quot;Ubuntu Mono&amp;quot;, &amp;quot;DejaVu Sans Mono&amp;quot;, &amp;quot;Liberation Mono&amp;quot;, &amp;quot;JetBrains Mono&amp;quot;, &amp;quot;Fira Code&amp;quot;, Cousine, &amp;quot;Roboto Mono&amp;quot;, &amp;quot;Courier New&amp;quot;, Courier, sans-serif, system-ui; margin: 0px !important; overflow: auto; white-space: pre-wrap; word-break: break-all; padding: 16px; color: rgb(15, 17, 21); letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span&gt;LossFn &lt;/span&gt;&lt;/pre&gt;&#xa;&#xa;" vertex="1">
+          <mxGeometry height="30" width="80" x="660" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-19" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&#xa;&lt;pre style=&quot;font: 400 13px / 22px Menlo, Monaco, Consolas, &amp;quot;Cascadia Mono&amp;quot;, &amp;quot;Ubuntu Mono&amp;quot;, &amp;quot;DejaVu Sans Mono&amp;quot;, &amp;quot;Liberation Mono&amp;quot;, &amp;quot;JetBrains Mono&amp;quot;, &amp;quot;Fira Code&amp;quot;, Cousine, &amp;quot;Roboto Mono&amp;quot;, &amp;quot;Courier New&amp;quot;, Courier, sans-serif, system-ui; margin: 0px !important; overflow: auto; white-space: pre-wrap; word-break: break-all; padding: 16px; color: rgb(15, 17, 21); letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;span&gt;Activation  &lt;/span&gt;&lt;/pre&gt;&#xa;&#xa;" vertex="1">
+          <mxGeometry height="30" width="110" x="735" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Файловая система" vertex="1">
+          <mxGeometry height="60" width="515" x="445" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Стандартная библиотека C++ (контейнеры, математика, исключения, файлы)" vertex="1">
+          <mxGeometry height="60" width="515" x="445" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-22" edge="1" parent="1" source="1tVsdVtRWur1VHvv7in1-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="1tVsdVtRWur1VHvv7in1-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-24" edge="1" parent="1" source="1tVsdVtRWur1VHvv7in1-1" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="1tVsdVtRWur1VHvv7in1-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="700" y="440" as="sourcePoint" />
+            <mxPoint x="750" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-26" edge="1" parent="1" source="1tVsdVtRWur1VHvv7in1-4" style="endArrow=classic;html=1;rounded=0;exitX=0.505;exitY=0.999;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" target="1tVsdVtRWur1VHvv7in1-20" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="700" y="440" as="sourcePoint" />
+            <mxPoint x="750" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1tVsdVtRWur1VHvv7in1-28" edge="1" parent="1" source="1tVsdVtRWur1VHvv7in1-20" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="1tVsdVtRWur1VHvv7in1-21" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="700" y="540" as="sourcePoint" />
+            <mxPoint x="750" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
