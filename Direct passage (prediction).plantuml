@@ -1,0 +1,37 @@
+@startuml
+title Сценарий 2: Прямой проход (предсказание)
+
+actor "Пользователь" as User
+participant "ArtificialNeuralNetwork" as ANN
+participant "Network" as Net
+participant "Layer1" as L1
+participant "Layer2" as L2
+participant "Neuron" as Nrn
+
+User -> ANN: predict([1.0, 2.0])
+ANN -> Net: predict([1.0, 2.0])
+Net -> L1: forward([1.0, 2.0])
+
+loop для каждого нейрона в Layer1
+    L1 -> Nrn: activate(inputs)
+    Nrn -> Nrn: вычислить взвешенную сумму + bias + активация
+    Nrn --> L1: output
+end
+
+L1 -> L1: собрать выходы в layer1_output
+L1 --> Net: layer1_output
+
+Net -> L2: forward(layer1_output)
+
+loop для каждого нейрона в Layer2
+    L2 -> Nrn: activate(inputs)
+    Nrn -> Nrn: вычислить взвешенную сумму + bias + активация
+    Nrn --> L2: output
+end
+
+L2 -> L2: собрать выходы в final_output
+L2 --> Net: final_output (prediction)
+Net --> ANN: prediction
+ANN --> User: prediction
+
+@enduml

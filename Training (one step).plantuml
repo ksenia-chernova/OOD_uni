@@ -1,0 +1,63 @@
+@startuml
+title Сценарий 3: Обучение (один шаг)
+
+actor "Пользователь" as User
+participant "ArtificialNeuralNetwork" as ANN
+participant "Network" as Net
+participant "Layer" as Layer
+participant "Neuron" as Nrn
+participant "LossFunction" as Loss
+participant "Optimizer" as Opt
+
+User -> ANN: train(sample, target, 1 step)
+
+== Фаза 1: Прямой проход ==
+
+ANN -> Net: predict(sample)
+Net -> Layer: forward(sample)
+Layer -> Nrn: activate(inputs)
+Nrn -> Nrn: вычислить взвешенную сумму + bias + активация
+Nrn --> Layer: output
+Layer --> Net: layer_output
+Net --> ANN: prediction
+
+== Фаза 2: Вычисление ошибки ==
+
+ANN -> Loss: compute(prediction, target)
+Loss -> Loss: вычислить скалярную ошибку
+Loss --> ANN: loss_value
+
+ANN -> Loss: derivative(prediction, target)
+Loss -> Loss: вычислить вектор градиентов
+Loss --> ANN: gradient_vector
+
+== Фаза 3: Обратное распространение ==
+
+ANN -> Net: backward(gradient_vector)
+Net -> Layer: backward(gradient_from_next)
+Layer -> Nrn: computeGradient(nextError)
+Nrn -> Nrn: delta = nextError * derivative_activation
+Nrn -> Nrn: gradient_for_prev = delta * weights
+Nrn --> Layer: gradient_for_previous_layer
+Layer --> Net: gradient_for_prev_layer
+Net --> ANN: backward complete
+
+== Фаза 4: Обновление весов ==
+
+ANN -> Opt: update(layers)
+loop для каждого слоя
+    loop для каждого нейрона
+        Opt -> Nrn: getDelta()
+        Nrn --> Opt: delta
+        Opt -> Nrn: getWeights()
+        Nrn --> Opt: weights
+        Opt -> Opt: new_weight = weight - lr * delta * input
+        Opt -> Nrn: setWeights(new_weights)
+        Opt -> Nrn: setBias(bias - lr * delta)
+    end
+end
+Opt --> ANN: weights updated
+
+ANN --> User: training step completed
+
+@enduml

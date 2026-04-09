@@ -1,0 +1,31 @@
+@startuml
+title Сценарий 1: Создание и конфигурация сети
+
+actor "Пользователь" as User
+participant "ArtificialNeuralNetwork" as ANN
+participant "Network" as Net
+participant "Layer" as Layer
+participant "Optimizer" as Opt
+
+User -> ANN: new ArtificialNeuralNetwork()
+ANN -> Net: new Network()
+Net --> ANN: Network создан
+
+User -> ANN: addLayer(DenseLayer(10,20))
+ANN -> Net: addLayer(layer)
+Net -> Layer: createNeurons()
+loop для каждого нейрона
+    Layer -> Layer: initializeWeights()
+end
+Layer --> Net: слой создан
+Net --> ANN: слой добавлен
+
+User -> ANN: setOptimizer(SGD)
+ANN -> Opt: setOptimizer(optimizer)
+Opt --> ANN: оптимизатор установлен
+
+User -> ANN: setLossFunction(MSE)
+ANN -> ANN: store lossFunction internally
+ANN --> User: сеть готова к использованию
+
+@enduml
