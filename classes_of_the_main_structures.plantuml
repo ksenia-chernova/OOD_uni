@@ -1,0 +1,67 @@
+@startuml
+title Ключевые структуры данных (упрощённо)
+
+class Neuron {
+    - vector<float> weights
+    - float bias
+    - float output
+    - float delta
+    + activate(inputs)
+    + computeGradient(nextError)
+}
+
+class Layer {
+    # vector<Neuron> neurons
+    # vector<float> layerInput
+    # vector<float> layerOutput
+    + forward(inputs)
+    + backward(gradientFromNext)
+}
+
+class Network {
+    - vector<unique_ptr<Layer>> layers
+    + predict(inputs)
+    + train(samples, targets)
+}
+
+abstract class ActivationFunction {
+    + forward(x)
+    + backward(x)
+}
+
+abstract class Optimizer {
+    - float learningRate
+    + update(layers)
+}
+
+abstract class LossFunction {
+    + compute(prediction, target)
+    + derivative(prediction, target)
+}
+
+class AdamState {
+    - float beta1
+    - float beta2
+    - float epsilon
+    - size_t timestep
+    - vector<float> mWeights
+    - vector<float> vWeights
+    - vector<float> mBias
+    - vector<float> vBias
+}
+
+class ModelSnapshot {
+    - uint32_t version
+    - uint32_t layerCount
+    - uint32_t checksum
+}
+
+Neuron *-- Layer
+Layer *-- Network
+ActivationFunction <|-- Layer
+Optimizer <|-- Network
+LossFunction <|-- Network
+AdamState *-- Optimizer
+ModelSnapshot ..> Network : сохраняет
+
+@enduml
