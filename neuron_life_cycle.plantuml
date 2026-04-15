@@ -1,0 +1,66 @@
+@startuml
+title Жизненный цикл нейрона (Neuron)
+
+state "Неинициализирован" as UNINIT
+state "Инициализирован (веса заданы)" as INIT
+state "Готов к forward" as READY
+state "Вычисление forward" as FORWARD
+state "Вычисление backward" as BACKWARD
+state "Обновление весов" as UPDATE
+state "Уничтожен" as DESTROYED
+
+[*] --> UNINIT : создание объекта\nNeuron(inputSize)
+
+UNINIT --> INIT : initializeWeights()\n(случайно / Ксавье)
+
+INIT --> READY : веса и bias\nустановлены
+
+READY --> FORWARD : activate(inputs)\n(вызывается слоем)
+
+FORWARD --> READY : output сохранён\n(возврат управления)
+
+READY --> BACKWARD : computeGradient(nextError)\n(вызывается слоем)
+
+BACKWARD --> READY : delta сохранена\n(возврат управления)
+
+READY --> UPDATE : updateWeights(learningRate, inputs)\n(вызывается оптимизатором)
+
+UPDATE --> READY : веса и bias обновлены
+
+READY --> DESTROYED : удаление нейрона\n(выход из области видимости)
+
+DESTROYED --> [*]
+
+note right of UNINIT
+  Состояние после создания:
+  - weights заполнены 0
+  - bias = 0
+  - output = 0
+  - delta = 0
+end note
+
+note right of INIT
+  Инициализация:
+  - weights ~ случайные значения
+  - bias = 0 (или случайное)
+end note
+
+note right of FORWARD
+  Вычисления:
+  - sum = dot(weights, inputs) + bias
+  - output = activation(sum)
+end note
+
+note right of BACKWARD
+  Вычисления:
+  - delta = nextError * activation_derivative(sum)
+  - gradientForPrev = delta * weights
+end note
+
+note right of UPDATE
+  Обновление (SGD):
+  - weight -= learningRate * delta * input
+  - bias -= learningRate * delta
+end note
+
+@enduml

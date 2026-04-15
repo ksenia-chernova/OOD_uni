@@ -1,0 +1,62 @@
+@startuml
+title Жизненный цикл слоя (Layer)
+
+state "Создан (без нейронов)" as CREATED
+state "С нейронами (не проверен)" as WITH_NEURONS
+state "Проверен (готов к использованию)" as VALIDATED
+state "Выполнение forward" as DOING_FORWARD
+state "Выполнение backward" as DOING_BACKWARD
+state "Уничтожен" as DESTROYED
+
+[*] --> CREATED : Layer(inputSize, outputSize)
+
+CREATED --> WITH_NEURONS : createNeurons()\n(создание outputSize нейронов)
+
+WITH_NEURONS --> VALIDATED : validate()\n(проверка совместимости\nс соседними слоями)
+
+VALIDATED --> DOING_FORWARD : forward(inputs)
+
+DOING_FORWARD --> VALIDATED : forward завершён\n(layerOutput сохранён)
+
+VALIDATED --> DOING_BACKWARD : backward(gradientFromNext)
+
+DOING_BACKWARD --> VALIDATED : backward завершён\n(gradientForPrev вычислен)
+
+VALIDATED --> DESTROYED : удаление слоя\n(выход из области видимости)
+
+CREATED --> DESTROYED : (при ошибке создания)
+
+DESTROYED --> [*]
+
+note right of CREATED
+  После создания:
+  - neurons_ пуст
+  - inputSize, outputSize заданы
+  - activationFn установлена (по умолчанию)
+end note
+
+note right of WITH_NEURONS
+  Созданы нейроны:
+  - каждый нейрон инициализирован
+  - веса распределены случайно
+end note
+
+note right of VALIDATED
+  Слой проверен:
+  - все нейроны корректны
+  - готов к использованию в сети
+end note
+
+note right of DOING_FORWARD
+  Прямой проход:
+  - вход передан всем нейронам
+  - собран layerOutput
+end note
+
+note right of DOING_BACKWARD
+  Обратный проход:
+  - градиент распределён по нейронам
+  - вычислен gradientForPrev
+end note
+
+@enduml

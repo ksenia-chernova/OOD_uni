@@ -1,0 +1,75 @@
+@startuml
+title Жизненный цикл сети (Network)
+
+state "Пустая (без слоёв)" as EMPTY
+state "Слои добавлены (не скомпилирована)" as LAYERS_ADDED
+state "Скомпилирована (готова к работе)" as COMPILED
+state "Обучение" as TRAINING
+state "Предсказание" as PREDICTING
+state "Сохранение / Загрузка" as IO
+state "Уничтожена" as DESTROYED
+
+[*] --> EMPTY : Network()
+
+EMPTY --> LAYERS_ADDED : addLayer(layer)\n(добавление первого слоя)
+
+LAYERS_ADDED --> LAYERS_ADDED : addLayer(layer)\n(добавление следующих слоёв)
+
+LAYERS_ADDED --> COMPILED : compile()\n(проверка совместимости слоёв)
+
+COMPILED --> TRAINING : train(samples, targets, epochs)
+
+TRAINING --> COMPILED : обучение завершено\n(или прервано)
+
+COMPILED --> PREDICTING : predict(inputs)
+
+PREDICTING --> COMPILED : предсказание вычислено
+
+COMPILED --> IO : save(filepath) / load(filepath)
+
+IO --> COMPILED : операция завершена
+
+COMPILED --> DESTROYED : удаление сети
+
+EMPTY --> DESTROYED : (при ошибке)
+
+LAYERS_ADDED --> DESTROYED : (при ошибке)
+
+DESTROYED --> [*]
+
+note right of EMPTY
+  Состояние после создания:
+  - layers_ пуст
+  - optimizer = nullptr
+  - lossFunction = nullptr
+end note
+
+note right of LAYERS_ADDED
+  Слои добавлены:
+  - совместимость не проверена
+  - сеть не готова к работе
+end note
+
+note right of COMPILED
+  Сеть скомпилирована:
+  - все размеры согласованы
+  - optimizer и lossFunction установлены
+  - сеть готова к predict/train
+end note
+
+note right of TRAINING
+  Цикл обучения:
+  - forward для каждого примера
+  - backward (обратное распространение)
+  - update (обновление весов)
+  - возможно логирование ошибки
+end note
+
+note right of IO
+  Операции ввода-вывода:
+  - save: сериализация весов в файл
+  - load: десериализация из файла
+  - при ошибке состояние не меняется
+end note
+
+@enduml
