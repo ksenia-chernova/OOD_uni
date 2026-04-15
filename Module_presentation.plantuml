@@ -1,0 +1,131 @@
+@startuml
+title Рисунок 10. Диаграмма структуры модулей NeuralNetworkLib
+
+skinparam package {
+    BackgroundColor LightGray
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam component {
+    BackgroundColor LightBlue
+    BorderColor Black
+}
+
+' Корневой пакет
+package "neural_network_lib" #LightGray {
+    
+    ' Публичный API пакет
+    package "public" #LightYellow {
+        component "network.h" as NetworkHeader
+        component "layer.h" as LayerHeader
+        component "neuron.h" as NeuronHeader
+        component "optimizer.h" as OptimizerHeader
+        component "loss_function.h" as LossHeader
+        component "activation.h" as ActivationHeader
+    }
+    
+    ' Внутренняя реализация пакет
+    package "internal" #LightCyan {
+        
+        package "core" #LightGreen {
+            component "network_impl.h/cpp" as NetworkImpl
+            component "layer_impl.h/cpp" as LayerImpl
+            component "neuron_impl.h/cpp" as NeuronImpl
+        }
+        
+        package "optimizers" #LightGreen {
+            component "sgd.h/cpp" as SGD
+            component "adam.h/cpp" as Adam
+        }
+        
+        package "loss_functions" #LightGreen {
+            component "mse.h/cpp" as MSE
+            component "cross_entropy.h/cpp" as CrossEntropy
+        }
+        
+        package "activations" #LightGreen {
+            component "sigmoid.h/cpp" as Sigmoid
+            component "relu.h/cpp" as ReLU
+            component "tanh.h/cpp" as Tanh
+        }
+        
+        package "initialization" #LightGreen {
+            component "random_init.h/cpp" as RandomInit
+            component "xavier_init.h/cpp" as XavierInit
+        }
+        
+        package "serialization" #LightGreen {
+            component "serializer.h/cpp" as Serializer
+            component "deserializer.h/cpp" as Deserializer
+        }
+        
+        package "utils" #LightGreen {
+            component "math_utils.h/cpp" as MathUtils
+            component "debug_utils.h/cpp" as DebugUtils
+        }
+    }
+    
+    ' Тесты
+    package "tests" #LightPink {
+        component "test_neuron.cpp" as TestNeuron
+        component "test_layer.cpp" as TestLayer
+        component "test_network.cpp" as TestNetwork
+        component "test_optimizers.cpp" as TestOptimizers
+        component "test_loss_functions.cpp" as TestLoss
+        component "test_activations.cpp" as TestActivations
+        component "test_serialization.cpp" as TestSerialization
+    }
+    
+    ' Примеры
+    package "examples" #LightPink {
+        component "xor_example.cpp" as ExampleXOR
+        component "iris_example.cpp" as ExampleIris
+        component "regression_example.cpp" as ExampleRegression
+    }
+}
+
+' Зависимости между модулями
+NetworkHeader --> NetworkImpl
+LayerHeader --> LayerImpl
+NeuronHeader --> NeuronImpl
+
+NetworkImpl --> LayerImpl
+LayerImpl --> NeuronImpl
+NeuronImpl --> ActivationHeader
+
+OptimizerHeader --> SGD
+OptimizerHeader --> Adam
+SGD --> LayerImpl
+Adam --> LayerImpl
+
+LossHeader --> MSE
+LossHeader --> CrossEntropy
+
+ActivationHeader --> Sigmoid
+ActivationHeader --> ReLU
+ActivationHeader --> Tanh
+
+NetworkImpl --> Serializer
+NetworkImpl --> Deserializer
+Serializer --> MathUtils
+Deserializer --> MathUtils
+
+NetworkImpl --> RandomInit
+NetworkImpl --> XavierInit
+
+NetworkImpl --> DebugUtils
+
+TestNeuron --> NeuronHeader
+TestLayer --> LayerHeader
+TestNetwork --> NetworkHeader
+TestOptimizers --> OptimizerHeader
+TestLoss --> LossHeader
+TestActivations --> ActivationHeader
+TestSerialization --> NetworkHeader
+
+ExampleXOR --> NetworkHeader
+ExampleIris --> NetworkHeader
+ExampleRegression --> NetworkHeader
+
+@enduml
