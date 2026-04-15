@@ -1,0 +1,65 @@
+@startuml
+title Рисунок 9. Модель развертывания NeuralNetworkLib
+
+skinparam node {
+    BackgroundColor LightGray
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam component {
+    BackgroundColor LightBlue
+    BorderColor Black
+}
+
+skinparam artifact {
+    BackgroundColor LightYellow
+    BorderColor Black
+}
+
+skinparam database {
+    BackgroundColor LightGreen
+    BorderColor Black
+}
+
+' Узлы
+node "Рабочая станция / Сервер" as Workstation {
+    
+    artifact "Пользовательское приложение" as UserApp {
+        component "NeuralNetworkLib" as Lib
+        component "Пользовательский код" as UserCode
+    }
+    
+    database "Файловая система" as FileSystem {
+        artifact "Модели (.nn)" as ModelFiles
+        artifact "Обучающие данные" as TrainData
+    }
+    
+    node "Операционная система" as OS {
+        artifact "Стандартная библиотека C++ (STL)" as STL
+        artifact "Среда выполнения C++" as Runtime
+    }
+}
+
+' Связи
+UserCode --> Lib : линковка / вызовы
+Lib --> STL : вызовы
+Lib --> Runtime : вызовы
+Lib --> FileSystem : save() / load()
+UserCode --> TrainData : чтение
+UserCode --> ModelFiles : чтение/запись
+
+' Заметки
+note right of Lib
+  Библиотека может быть
+  статически (.lib/.a) или
+  динамически (.dll/.so)
+  слинкована с приложением
+end note
+
+note bottom of FileSystem
+  Локальная файловая система
+  (NTFS, ext4, APFS и т.д.)
+end note
+
+@enduml
