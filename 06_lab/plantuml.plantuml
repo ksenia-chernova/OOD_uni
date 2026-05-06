@@ -1,0 +1,164 @@
+@startuml ComputerConfiguratorUML
+title Паттерны проектирования: Конфигуратор ЭВМ (C++14)
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 5
+skinparam packageStyle rectangle
+skinparam stereotypeCBackgroundColor #E6F3FF
+skinparam stereotypeCFontColor #004080
+
+package "Enums" {
+    enum Platform <<enumeration>> {
+        PC
+        SERVER
+        WORKSTATION
+    }
+    enum ComponentType <<enumeration>> {
+        CPU
+        MOTHERBOARD
+        RAM
+        GPU
+    }
+}
+
+package "Components" {
+    interface IComponent {
+        + getName(): string
+        + getPrice(): double
+        + getPlatform(): Platform
+        + getType(): ComponentType
+        + clone(): IComponent* <<prototype>>
+    }
+    class CPU {
+        - name_: string
+        - plat_: Platform
+        - price_: double
+    }
+    class Motherboard {
+        - name_: string
+        - plat_: Platform
+        - price_: double
+        - socket_: string
+        + getSocket(): string
+    }
+    class RAM {
+        - name_: string
+        - plat_: Platform
+        - price_: double
+    }
+    class GPU {
+        - name_: string
+        - plat_: Platform
+        - price_: double
+    }
+}
+
+package "Abstract Factory" {
+    interface IComponentFactory {
+        + createCPU(): IComponent*
+        + createMotherboard(): IComponent*
+        + createRAM(): IComponent*
+        + createGPU(): IComponent*
+        + getPlatform(): Platform
+    }
+    class PCFactory
+    class ServerFactory
+}
+
+package "Builder & Director" {
+    class Computer {
+        - components_: vector<IComponent*>
+        - platform_: Platform
+        + addComponent(IComponent*)
+        + getTotalPrice(): double
+        + checkCompatibility(): bool
+        + getSpecification(): string
+        + clone(): Computer* <<prototype>>
+    }
+    class ComputerBuilder {
+        - factory_: IComponentFactory*
+        - catalog_: PriceCatalog*
+        - parts_: vector<IComponent*>
+        + ComputerBuilder(IComponentFactory*, PriceCatalog*) <<DI>>
+        + reset()
+        + buildCPU()
+        + buildMotherboard()
+        + buildRAM()
+        + buildGPU()
+        + validateCompatibility(): bool
+        + build(): Computer*
+    }
+    class Director {
+        - builder_: ComputerBuilder*
+        + Director(ComputerBuilder*)
+        + constructStandardPC()
+        + constructServer()
+    }
+}
+
+package "Singleton" {
+    class PriceCatalog {
+        - instance_: PriceCatalog*
+        - prices_: map<string, double>
+        - PriceCatalog()
+        - PriceCatalog(const PriceCatalog&)
+        {static} + getInstance(): PriceCatalog*
+        {static} + destroy()
+        + registerPrice(string, double)
+        + getPrice(string): double
+    }
+}
+
+package "Prototype & Presets" {
+    class PresetManager {
+        - presets_: map<string, Computer*>
+        + savePreset(string, Computer*)
+        + loadPreset(string): Computer*
+    }
+}
+
+' ================= ОТНОШЕНИЯ =================
+
+' Наследование / Реализация интерфейсов
+IComponent <|-- CPU
+IComponent <|-- Motherboard
+IComponent <|-- RAM
+IComponent <|-- GPU
+IComponentFactory <|-- PCFactory
+IComponentFactory <|-- ServerFactory
+
+' Владение памятью (Композиция: new в конструкторах/билдере, delete в деструкторах)
+Computer "1" *-- "0..*" IComponent : владеет/удаляет >
+PresetManager "1" *-- "0..*" Computer : владеет клонами >
+
+' Создание объектов
+IComponentFactory ..> IComponent : создаёт компоненты >
+Director o-- ComputerBuilder : оркестрирует шаги >
+Director ..> Computer : возвращает готовый продукт >
+
+' Dependency Injection (явная передача в конструктор)
+ComputerBuilder --> IComponentFactory : DI >
+ComputerBuilder --> PriceCatalog : DI >
+
+' Prototype (глубокое копирование)
+IComponent <.. CPU : clone() >>
+IComponent <.. Motherboard : clone() >>
+IComponent <.. RAM : clone() >>
+IComponent <.. GPU : clone() >>
+Computer <.. Computer : clone() >>
+PresetManager ..> Computer : вызывает clone() при save/load >
+
+note right of PriceCatalog
+  Singleton Pattern
+  Глобальный каталог цен.
+  Уничтожается явно: PriceCatalog::destroy()
+end note
+
+note bottom of ComputerBuilder
+  Builder + DI Pattern
+  Зависимости внедряются явно.
+  Валидация совместимости перед build().
+end note
+
+@enduml
